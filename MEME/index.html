@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiple Embedding Model for EHR (MEME)</title>
+
+  <!-- <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet"> -->
+
+  <!-- <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script> -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <link rel="icon" href="./favicon.ico?">
+
+
+
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <meta property="og:image:width" content="1600" />
+  <meta property="og:image:height" content="900" />
+
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-body no-bottom-padding">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Emergency Department Decision Support using Clinical Pseudo-notes</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a target="_blank" href="https://simonlee-a.github.io/">Simon Lee</a><sup>*</sup><sup>1</sup>&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="https://github.com/jainsujay02">Sujay Jain</a><sup>*</sup><sup>1</sup>&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="https://github.com/ashchen3">Alex Chen</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="https://github.com/kyokaono8101">Kyoka Ono</a><sup>1,2</sup>&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="https://emedharbor.edu/people/faculty/">Jennifer Fang</a><sup>1,3</sup>&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="https://scholar.google.hu/citations?user=UFFcgo4AAAAJ&hl=hu">Akos Rudas</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="https://www.uclahealth.org/departments/neurosurgery/research/research-scientists/jeffrey-chiang-phd">Jeffrey N. Chiang</a><sup>1</sup>&nbsp;&nbsp;&nbsp;
+                <br /><sup>1</sup>UCLA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup> ICU, Tokyo Japan <sup>3</sup> Harbor-UCLA Medical Center
+                <span class="brmod" style="color:rgb(183, 0, 0)"><b>CVPR 2023</b></span>
+              </span>
+            </div>
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a href="resources/vrb_paper.pdf"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- arXiv Link. -->
+                <span class="link-block">
+                  <a target="_blank" href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Video Link. -->
+                <span class="link-block">
+                  <a target="_blank" href="https://www.youtube.com/embed/WdMYGESu8Ak"
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-youtube"></i>
+                    </span>
+                    <span>Video</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
+                    </span>
+                    <span>Code (Coming Soon)</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fa fa-database"></i>
+                    </span>
+                    <span>Dataset (Coming Soon)</span>
+                  </a>
+                </span>
+
+                <!-- Code Link. -->
+
+                <!-- twitter Link. -->
+                <span class="link-block">
+                  <a target="_blank" href=""
+                     class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                        <i class="fab fa-twitter"></i>
+                    </span>
+                    <span>Summary</span>
+                  </a>
+                </span>
+              </div>
+  
+            </div>
+            </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div align="center">
+        <video id="teaser" muted playsinline autoplay loop width="100%">
+          <source src="./resources/vrb_initial_v2_compressed.mp4"
+                  type="video/mp4">
+        </video>
+        
+        <!-- <h2 class="title is-5">Input: observation<span style="opacity:0;"></span>Output: future prediction</h2> -->
+        </div>  
+        <br> 
+        <h2 class="subtitle has-text-centered">
+          Given a scene, our approach (VRB) learns  <strong> actionable representations </strong> for robot learning. VRB predicts contact points and a post-contact trajectory learned from <strong> human videos </strong>. 
+        </h2>
+  
+      </div>
+  
+    </div>
+  </section>
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container is-two-thirds">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds">
+            <h2 class="title is-3">Abstract</h2>
+          </div>
+      </div>
+    
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-two-thirds ">
+          <div class="content has-text-justified">
+            Building a robot that can understand and learn to interact by watching humans has inspired several vision problems. However, despite some successful results on static datasets, it remains unclear how current models can be used on a robot directly. In this paper, we aim to bridge this gap by leveraging videos of human interactions in an environment centric manner. Utilizing internet videos of human behavior, we train a visual affordance model that estimates where and how in the scene a human is likely to interact. The structure of these behavioral affordances directly enables the robot to perform many complex tasks. We show how to seamlessly integrate our affordance model with four robot learning paradigms including offline imitation learning, exploration, goal-conditioned learning, and action parameterization for reinforcement learning. We show the efficacy of our approach, which we call Vision-Robotics Bridge (VRB) as we aim to seamlessly integrate computer vision techniques with robotic manipulation, across 4 real world environments, over 10 different tasks, and 2 robotic platforms operating in the wild. 
+          </div>
+        </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Extracting Affordances Without Extra Annotations</h1>
+          <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
+
+          <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds ">
+          <div class="content has-text-justified">
+            <p>
+              Robot-centric Affordances: While visual affordances have been studied extensively in computer vision, applying them to robotics needs smart tweaks. As we learn from large-scale human videos but apply to robots, we seek an agent-agnostic affordance to facilitate this transfer. Therefore, we define affordance as:
+            </p>
+          </div>
+        </div>
+      </div>
+          <div class="column" style="text-align: center;">
+            <img src="resources/affordance_definition.png" alt="Image description" width="60%">
+        </div>
+          <br>
+          <br>
+          <h2 class="subtitle is-4" style="text-align: center;">Extracting Visual Affordances from Human Videos</h2>
+          <div class="columns is-centered">
+            <div class="column is-full" style="text-align: center;">
+              <img src="resources/affordance_pipeline.png" alt="Image description" width="80%">
+              <br>
+              <br>
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-two-thirds">
+                <div class="content has-text-justified interpolation-panel">
+                    <p style="text-align: center;font-size: 18px"> We extract affordances from large scale human video datasets such as <a href="https://ego4d-data.org/">Ego4D</a> and <a href="https://epic-kitchens.github.io/2023"></a> Epic Kitchens. We use off the shelf hand-object interaction detectors to find the contact region and post contact wrist trajectory.</p>
+                </div>
+              </div>
+            </div>
+            <br>
+              
+            </div>
+          </div>
+          <div class="columns is-centered">
+            <div class="columns is-centered">
+              <div class="column is-full" style="text-align: center;">
+                <img src="resources/ego4d_pipeline.jpg" alt="Image description" width="80%">
+                <br>
+                <br>
+  
+                <div class="columns is-centered has-text-left">
+                  <div class="column is-two-thirds">
+                  <div class="content has-text-left interpolation-panel">
+                <p style="text-align: center; font-size: 18px"> <strong>Illustration of annotation pipeline </strong>  (Left) Find the frame with hand-object contact. (Middle) Track the wrist to obtain the post contact trajectory. (Right) Map both to the first human entry frame for reference.</p>
+              </div>
+              </div>
+
+            </div>
+            <!-- <div class="column is-full" style="text-align: center;">
+              <video playsinline autoplay loop muted src="./resources/affordance_pipeline.mp4" width="80%" style="border: none;"></video>
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-two-thirds ">
+                <div class="content has-text-justified">
+              <p style="text-align: center;">We first find the contact point using a hand object interaction detector. We find the post contact trajectory by tracking the wrist after the contact frame. To avoid distribution shift (as at test humans will not be present), we train our model with the first frame where the human is not present. We reproject the affordances to the. </p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <div class="columns is-centered">
+        <div class="column is-full" style="text-align: center;">
+          <div class="columns is-centered">
+            <div class="column is-three-quarters">
+              <div class="columns is-centered">
+                <div class="column is-one-quarter has-text-centered">
+                  <video playsinline autoplay loop muted src="./resources/human_vrb.mp4" width="80%" style="border: none;">
+                  </video>
+                </div>
+              </div>
+              <div class="columns is-centered">
+                <div class="column is-three-quarters">
+                  <video playsinline autoplay loop muted src="./resources/contact_wrist_v2.mp4" width="100%" style="border: none;">
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds">
+              <div class="content has-text-justified">
+                <div class="interpolation-panel">
+                <p style="text-align: center; font-size: 15px">We first find the contact point using a hand object interaction detector. We find the post contact trajectory by tracking the wrist after the contact frame. Once we have detected these frames, a major issue is that the <strong> the human is still in the scene </strong>, leading to a distribution shift.</p>
+              </div>
+            </div>
+            </div>
+          </div>
+          <br>
+          <br>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds">
+                <div class="content">
+                  <p style="text-align: center; font-size: 18px">Our solution is to simply <strong>map the affordances back to the first frame without the human.</strong></p>
+                </div>
+            </div>
+          </div>
+          <div class="columns is-centered">
+            <div class="column">
+              <video playsinline autoplay loop muted src="./resources/frame_human_v2.mp4" width="70%" style="border: none;"></video>
+            </div>
+          </div>
+
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds">
+              <div class="content has-text-justified">
+                <div class="interpolation-panel">
+                <p style="text-align: center; font-size: 16px">We use available camera information to project both the contact points and the post-contact trajectory to the human-agnostic frame. This frame is used as input to our model. </p>
+              </div>
+            </div>
+            </div>
+          </div>
+
+          <br>
+          <h2 class="title is-3">Our Affordance Pipeline</h2>
+          <div class="columns is-centered">
+            <div class="column">
+              <img src="resources/full_pipeline.jpg" alt="Full Pipeline" style="border: 1px; border-radius:1px; width: 60%;">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+          
+
+
+            </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+  <section class="section" style="width: 100%; margin: 0 auto;">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 5px;"><strong>VRB: Model</strong></h3>    
+          <div class="columns is-centered">
+            <div class="column is-three-quarters">
+              <!-- <img src="resources/vrb_method.png" alt="VRB Model" style="border: 1px solid rgb(93, 92, 92); border-radius:10px; width: 100%;"> -->
+              <img src="resources/vrb_method.png" alt="VRB Model" style="border: 1px; border-radius:10px; width: 100%;">
+            </div>
+          </div>
+          <div class="columns is-centered">
+            <div class="column is-three-quarters has-text-centered">
+              <div class="interpolation-panel">
+                <div class="content">
+                  <p style="font-size: 18px">
+                    Our model takes a human-agnostic frame as input. The contact head outputs a contact heatmap (left) and the trajectory transformer predicts wrist waypoints (orange). This output can be directly used at inference time (with sparse 3D information, such as depth, and robot kinematics).
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+  <section class="section" style="width: 85%; margin: 0 auto;">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h3 class="title is-1" style="text-align: center; padding-bottom: 10px;"><bold>Applications to Robotics</bold></h3>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds ">
+            <div class="content has-text-justified">
+          <p style="text-align: center; font-size: 22px"> We benchmark VRB on <strong> 10+ Tasks, 2 robot morphologies, 4 learning paradigms </strong></p>
+        </div>
+        </div>
+        </div>
+          <tr>
+            <td>
+
+              <div class="row">
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/knife.mp4" width="100%"
+                           style="border-radius:10px; "></video>
+                </div>
+                <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/lid.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/can.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div> 
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/pot.mp4" width="100%"
+                        style="border-radius:10px; "></video>
+                </div>          
+            </div>
+            <div class="row">
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/phone.mp4" width="100%"
+                           style="border-radius:10px; "></video>
+                </div>
+                <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/veggies.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/dishwasher.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div>  
+             <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/soup.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div>         
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/door.mp4" width="100%"
+                           style="border-radius:10px; "></video>
+                </div>
+                <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/drawer.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/shelf.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div>  
+             <div class="col">
+                <video class="center" playsinline autoplay loop muted src="./resources/cabinet.mp4" width="100%"
+                       style="border-radius:10px; "></video>
+             </div>         
+            </div>
+            </td>
+          </tr>
+        </div> 
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><bold>Visualizing Affordance Model Output</bold></h3>
+          
+          <tr>
+            <td>
+
+              <div class="row">
+                <div class="col">
+                    <video class="center" playsinline autoplay loop muted src="./resources/affordance_drawer.mp4" width="100%"
+                           style="border-radius:10px; "></video>
+                </div>
+                <div class="col">
+                  <video class="center" playsinline autoplay loop muted src="./resources/affordance_knife.mp4" width="100%"
+                         style="border-radius:10px; "></video>
+              </div>
+              <br>
+              <br>
+            </td>
+          </tr>
+        </div> 
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><bold>Robot Learning Paradigms</bold></h3>
+          
+          <tr>
+            <td>
+              <div class="columns is-centered">
+                <div class="column is-full" style="text-align: center;">
+                  <img src="resources/robot_paradigms.png" alt="Image description" width="95%">
+                  <br>
+                  <br>
+                  
+                  <div class="column is-centered">
+                    <div class="is-one-third">
+                    <div class="is-vcentered interpolation-panel">
+                      <div class="content has-text-left">
+                        <p style="font-size: 18px">
+                          <strong> Robot Learning Paradigms </strong>  (Top-Left) Affordance-model driven data collection for offline imitation. (Top-Right) Reward free exploration. (Bottom-Left) Goal-conditioned policy learning with our affordance model. (Bottom-Right) Using the affordance model outputs to reparameterize actions.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </div> 
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>Affordance Model-based Data Collection</strong></h3>
+          <div class="columns is-centered">
+            <div class="column is-centered">
+              <video class="center" playsinline autoplay loop muted src="./resources/data_collection.mp4" width="100%" style="border-radius:10px;"></video>
+            </div>
+            <div class="column is-centered">
+              <img src="./resources/dc_results_2.jpg" alt="Data Collection Results" style="border-radius: 10px; width: 77%;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>Goal-Conditioned Learning</strong></h3>
+          <div class="columns">
+            <div class="column">
+              <video class="center" playsinline autoplay loop muted src="./resources/goal_dw.mp4" width="100%" style="border: 1px solid rgb(93, 92, 92); border-radius:10px;"></video>
+            </div>
+            <div class="column">
+              <video class="center" playsinline autoplay loop muted src="./resources/goal_can.mp4" width="100%" style="border: 1px solid rgb(93, 92, 92); border-radius:10px;"></video>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-full">
+              <div class="has-text-centered">
+                <img src="./resources/gcl_results.jpg" alt="GCL Results" style="border-radius: 10px; width: 70%; display: inline-block;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>Reward-Free Exploration</strong></h3>
+          <div class="columns is-vcentered custom-interpolation-panel; padding-bottom: 10px">
+            <div class="column">
+              <video class="center" playsinline autoplay loop muted src="./resources/expl_pot.mp4" width="100%" style="border-radius:10px;"></video>
+            </div>
+            <div class="column">
+              <video class="center" playsinline autoplay loop muted src="./resources/expl_cabinet.mp4" width="100%" style="border-radius:10px;"></video>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-full">
+              <img src="./resources/expl_results.png" alt="Exploration Results" style="border-radius: 10px; width: 100%;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-three-quarters">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>Visual Affordances as Action Spaces</strong></h3>
+          <div class="columns">
+            <div class="column">
+              <img src="./resources/aff_action_space.png" alt="Affordance Action Space" style="border-radius: 1px; width: 100%;">
+            </div>
+            <div class="column">
+              <img src="./resources/action_space_results.png" alt="Action Space Results" style="border-radius: 10px; width: 80%;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="hero is-light is-small">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Project Video</h2>
+          </div>
+      </div>
+    
+  
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-max-desktop">
+          <div id="method_video" class="publication-video">
+            <iframe src="https://www.youtube.com/embed/WdMYGESu8Ak" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered is-two-thirds">
+        <div class="column is-two-thirds">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>Simulation Benchmark</strong></h3>
+          <div class="columns">
+            <div class="column">
+              <img src="./resources/kitchen.png" alt="Kitchen Simulation" style="border-radius: 10px; width: 100%;">
+            </div>
+            <div class="column">
+              <div class="columns is-multiline">
+                <div class="column is-full">
+                  <div class="is-vcentered interpolation-panel">
+                    <div class="content">
+                      <p style="font-size: 17px">
+                        We have also tested VRB on a simulation benchmark, specifically, the <a href="https://github.com/Farama-Foundation/D4RL/blob/master/d4rl/kitchen/kitchen_envs.py">Franka Kitchen benchmark from D4RL</a>. Our method demonstrates superior performance compared to the baselines on three distinct tasks within the benchmark.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="column is-full">
+                  <img src="./resources/sim_results.jpg" alt="Simulation Results" style="border-radius: 1px; width: 100%;">
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-half">
+          <h3 class="title is-3" style="text-align: center; padding-bottom: 10px;"><strong>Handling Rare Objects</strong></h3>
+          <div class="columns is-vcentered">
+            <div class="column is-half">
+              <img src="./resources/rare_objects.png" alt="Rare Objects" style="border-radius: 10px; width: 100%; display: block; margin-left: auto; margin-right: auto;">
+            </div>
+            <div class="column">
+              <div class="is-vcentered interpolation-panel">
+                <div class="content has-text-centered">
+                  <p style="font-size: 18px">
+                    VRB demonstrates effective handling of rare objects, outperforming the Hotspots baseline in grasping various held-out items. This showcases VRB's adaptability to different tasks and environments.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="titile">BibTeX</h2>
+      <pre><code>@inproceedings{bahl2023affordances,
+              title={Affordances from Human Videos as a Versatile Representation for Robotics},
+              author={Bahl, Shikhar and Mendonca, Russell and Chen, Lili and Jain, Unnat and Pathak, Deepak},
+              journal={CVPR},
+              year={2023}
+            }</code></pre>
+    </div>
+  </section>
+  
+  
+  
+  
+  <section class="section">
+    <div class="container is-max-desktop content">
+      <h2 class="titile">Acknowledgements</h2>
+    <div class="is-vcentered interpolation-panel">
+      <div class="container content">
+        <p style = "font-size: 16px">
+          We thank Shivam Duggal, Yufei Ye and Homanga Bharadhwaj for fruitful discussions and are grateful to Shagun Uppal, Ananye Agarwal, Murtaza Dalal and Jason Zhang for comments on early drafts of this paper. RM, LC, and DP are supported by NSF IIS-2024594, ONR MURI N00014-22-1-2773 and ONR N00014-22-1-2096.
+        </p>
+      </div>
+    </div>
+  </div>  
+  </section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <br />
+      <p> Template from <a href="https://nerfies.github.io"><span class="dnerf">Nerfies</span></a>.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+
