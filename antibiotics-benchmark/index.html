@@ -176,7 +176,7 @@
           </div>
         </div>
       </div>
-
+      <div style="width: 100%; text-align: center;">
       <table border="1">
         <tr>
             <th>Description</th>
@@ -264,6 +264,141 @@
             <td>6</td>
         </tr>
     </table>
+    </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Modeling Setup</h1>
+            <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
+  
+            <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds ">
+            <div class="content has-text-justified">
+              <p>
+              In this work we used the Hugging Face platform to access pre-trained language models. We used the following models:
+
+              <div class="column" style="text-align: center;">
+                <img src="resources/FM.png" alt="Image description" width="40%">
+            </div>
+
+            In this study we decided to freeze these pre-trained model parameters and then use these embeddings as input into a light gradient boosting machine (LGBM) model. We then used the Area under the Reciever Operating Characteristic and the Area under the Precision Recall Curve as our evaluation metrics.
+              </p>
+            </div>
+          </div>
+        </div>
+      
+        <section class="section">
+          <div class="container">
+            <div class="columns is-centered">
+              <div class="column is-full-width">
+                <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Antibiotics & Their Prevalance</h1>
+                <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
+      
+                <div class="columns is-centered has-text-centered">
+                <div class="column is-two-thirds ">
+                <div class="content has-text-justified">
+                  <p>
+                  We studied eight antibiotics in this study. The table below shows the prevalence of each antibiotic in our dataset. 
+
+                  <div style="width: 100%; text-align: center;">
+                    <table border="1" style="margin: auto;">
+                        <tr>
+                            <th>Category</th>
+                            <th>Antibiotic</th>
+                            <th>train</th>
+                            <th>test</th>
+                            <th>totals</th>
+                            <th>Prevalence (%)</th>
+                        </tr>
+                        <tr>
+                            <td rowspan="11">Antibiotics</td>
+                            <td>Clindamycin</td>
+                            <td>2645</td>
+                            <td>624</td>
+                            <td>3269</td>
+                            <td>54.6838</td>
+                        </tr>
+                        <tr>
+                            <td>Daptomycin</td>
+                            <td>185</td>
+                            <td>25</td>
+                            <td>210</td>
+                            <td>54.7021</td>
+                        </tr>
+                        <tr>
+                            <td>Erythromycin</td>
+                            <td>2626</td>
+                            <td>639</td>
+                            <td>3265</td>
+                            <td>3.5141</td>
+                        </tr>
+                        <tr>
+                            <td>Gentamicin</td>
+                            <td>4549</td>
+                            <td>1127</td>
+                            <td>5676</td>
+                            <td>54.6352</td>
+                        </tr>
+                        <tr>
+                            <td>Levofloxacin</td>
+                            <td>2866</td>
+                            <td>715</td>
+                            <td>3581</td>
+                            <td>94.9799</td>
+                        </tr>
+                        <tr>
+                            <td>Nitrofurantoin</td>
+                            <td>295</td>
+                            <td>92</td>
+                            <td>387</td>
+                            <td>59.9230</td>
+                        </tr>
+                        <tr>
+                            <td>Oxacillin</td>
+                            <td>2702</td>
+                            <td>667</td>
+                            <td>3369</td>
+                            <td>6.4759</td>
+                        </tr>
+                        <tr>
+                            <td>Rifampin</td>
+                            <td>1929</td>
+                            <td>459</td>
+                            <td>2388</td>
+                            <td>56.3755</td>
+                        </tr>
+                        <tr>
+                            <td>Tetracycline</td>
+                            <td>3747</td>
+                            <td>909</td>
+                            <td>4656</td>
+                            <td>39.9598</td>
+                        </tr>
+                        <tr>
+                            <td>Trimethoprim/sulfa</td>
+                            <td>3671</td>
+                            <td>908</td>
+                            <td>4579</td>
+                            <td>77.9116</td>
+                        </tr>
+                        <tr>
+                            <td>Vancomycin</td>
+                            <td>2529</td>
+                            <td>611</td>
+                            <td>3140</td>
+                            <td>76.6232</td>
+                        </tr>
+                    </table>
+                </div>
+                
+
+
+                  </p>
+                </div>
+              </div>
+            </div>
     
           
 
