@@ -280,7 +280,7 @@
               In this work we used the Hugging Face platform to access pre-trained language models. We used the following models:
 
               <div class="column" style="text-align: center;">
-                <img src="resources/FM.png" alt="Image description" width="40%">
+                <img src="resources/FM.png" alt="Image description" width="100%">
             </div>
 
             In this study we decided to freeze these pre-trained model parameters and then use these embeddings as input into a light gradient boosting machine (LGBM) model. We then used the Area under the Reciever Operating Characteristic and the Area under the Precision Recall Curve as our evaluation metrics.
@@ -378,6 +378,51 @@
                 </div>
               </div>
             </div>
+  
+            <section class="section">
+              <div class="container">
+                <div class="columns is-centered">
+                  <div class="column is-full-width">
+                    <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Results</h1>
+                    <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
+          
+                    <div class="columns is-centered has-text-centered">
+                    <div class="column is-two-thirds ">
+                    <div class="content has-text-justified">
+                      <p>
+
+                      We begin by showing the results of our study. Figure 1 displays the Area under the Reciever Operating Characteristic and Figure 2 displays the Area under the Precision Recall Curve as our evaluation metrics. We rank our models from best (top) to worst (bottom).
+
+                      <div class="column" style="text-align: center;">
+                        <img src="resources/1.png" alt="Image description" width="80%">
+                    </div>
+        
+                    <div class="column" style="text-align: center;">
+                      <img src="resources/2.png" alt="Image description" width="80%">
+                  </div>
+
+                      Below we present the results of our study in a much cleaner format. Figure 3 displays the Area under the Reciever Operating Characteristic and Figure 4 displays the Area under the Precision Recall Curve as our evaluation metrics. We rank our models from best (top) to worst (bottom) to show who wins each antibiotic benchmark.
+        
+                      <div class="column" style="text-align: center;">
+                        <img src="resources/AUROC.png" alt="Image description" width="80%">
+                    </div>
+        
+                    <div class="column" style="text-align: center;">
+                      <img src="resources/AUPRC.png" alt="Image description" width="80%">
+                  </div>
+
+                We see that the best model varies across different antibiotic objectives. However from these plots we do see that BiomedRoBERTa has 4 antibiotics where it performs the best.
+                <br>
+                <br>
+                
+                We therefore also present the average ranks of each model where we see SciBERT having the highest average rank.
+                <div class="column" style="text-align: center;">
+                  <img src="resources/rank.png" alt="Image description" width="80%">
+              </div>
+                </p>
+                    </div>
+                  </div>
+                </div>
     
           
 
