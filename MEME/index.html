@@ -169,9 +169,6 @@
         <div class="column is-full-width">
           <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Transforming Electronic Health Records into text</h1>
           <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
-          <div class="column" style="text-align: center;">
-            <img src="resources/model.png" alt="Image description" width="60%">
-        </div>
 
           <div class="columns is-centered has-text-centered">
           <div class="column is-two-thirds ">
@@ -230,7 +227,7 @@
 
         <br>
         <br>
-        <h2 class="subtitle is-4" style="text-align: center;">Why Multiple Embeddings</h2>
+        <h2 class="subtitle is-4" style="text-align: center;">Why Multiple Embeddings?</h2>
         <div class="columns is-centered">
           <div class="column is-full" style="text-align: center;">
             <br>
@@ -246,6 +243,26 @@
             
       </div>
     </div>
+
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Experiments</h1>
+            <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
+            <div class="column" style="text-align: center;">
+              <img src="resources/MEME.png" alt="Image description" width="60%">
+          </div>
+  
+            <div class="columns is-centered has-text-centered">
+            <div class="column is-two-thirds ">
+            <div class="content has-text-justified">
+              <p>
+                Our second main contribution is the Multiple Embedding Model for EHR architecture. We designed a methodology that takes pre-trained language models as representation models to generate multiple embeddings for our varying EHR input (e.g. medication, vitals, demographics). We then concatenate these embeddings and send this "patient embedding" through an additional self-attention layer where it learns the most important part of the inputs from the entire patient embedding. This model then gets fed to a MLP where it will be used for various downstream tasks in the Emergency Department.
+               </p>
+            </div>
+          </div>
+        </div>
 
       
 
