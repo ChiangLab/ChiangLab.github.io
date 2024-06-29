@@ -159,6 +159,23 @@
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h1 class="title is-2" style="text-align: center; padding-bottom: 10px;">Antibiotic Resistance</h1>
+          <!-- <h2 class="subtitle is-4" style="text-align: center;">Defining Visual Affordances</h2> -->
+
+          <div class="columns is-centered has-text-centered">
+          <div class="column is-two-thirds ">
+          <div class="content has-text-justified">
+            <p>
+              Antibiotic resistance is a growing global health threat, reducing the efficacy of treatments against bacterial infections. However with the ubiquitous amount of data, we are able to leverage Electronic Health Records (EHRs) which are patient histories to help predict antibitoic susceptibility. Therefore in this study we use pre-trained foundation models as a potential antibiotic stewardship effort to help combat antibiotic resistance and provide clinical decision support backed up by a data driven approach. 
+            </p>
+          </div>
+        </div>
+      </div>
+
 
   <section class="section">
     <div class="container">
@@ -286,7 +303,7 @@
                 <img src="resources/FM.png" alt="Image description" width="100%">
             </div>
 
-            In this study we decided to freeze these pre-trained model parameters and then use these embeddings as input into a light gradient boosting machine (LGBM) model. We then used the Area under the Reciever Operating Characteristic and the Area under the Precision Recall Curve as our evaluation metrics.
+            In this study we decided to freeze these pre-trained model parameters and then use these embeddings as input into a light gradient boosting machine (LGBM) model. We frame each antibiotic susceptibility prediction task as independent binary classifications. We then used the Area under the Reciever Operating Characteristic and the Area under the Precision Recall Curve as our evaluation metrics.
               </p>
             </div>
           </div>
